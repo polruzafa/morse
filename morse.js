@@ -87,7 +87,8 @@ function stringify(message){
     let tokens = message.split(" ");
     console.log(tokens)
     for(let word in tokens){
-        for(let letter in word){
+        console.log(tokens[word])
+        for(let letter in tokens[word]){
             for(let i = 0; i < letter.length; i++){
                 stringified += letter.charAt(i);
             }
