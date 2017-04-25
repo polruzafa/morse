@@ -19,9 +19,9 @@ app.get("/pls/has/:subdomain/changed/:ip", (request, response) =>{
 app.post("/morse/this/:message", (request, response) =>{
     //console.log(request.params.message);
     // Codify message to morse code
-    let morsified = morse.m2m(request.params.message);
+    let coded = morse.m2m(request.params.message);
     // Reproduce message as blinking LED
-    gpio.reproduce(morsified);
+    gpio.reproduce(coded);
     // Return info
     response.json({
         "message": request.params.message,

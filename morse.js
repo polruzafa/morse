@@ -59,8 +59,8 @@ function m2m(message){
 }
 // de-morse
 function m2c(character){
-    for (let letter in alphabet) {
-        if (alphabet.hasOwnProperty(letter)){
+    for(let letter in alphabet) {
+        if(alphabet.hasOwnProperty(letter)){
             if(alphabet[letter] == character){
                 return letter;
             }
