@@ -12,7 +12,8 @@ rpio.init();
 
 function reproduce(message){
     for(let sign in message){
-        //console.log(sign + ": "+message[sign]);
+        console.log("Reproducing message: \n\t> "+UNIT+"ms UNIT.\n\t>"+(message.length*UNIT)/1000+"seconds.")
+        console.log(sign + ": "+message[sign]);
         if(message[sign] == "."){
             dot();
             rpio.msleep(UNIT);
