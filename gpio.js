@@ -11,7 +11,7 @@ const INTER_WORD = UNIT * 7;
 rpio.init();
 
 function reproduce(message){
-    console.log("Reproducing message: \n\t- "+UNIT+"ms UNIT.\n\t- "+(message.length*UNIT)/1000+" seconds.")
+    console.log("Reproducing message: \n"+message+"\n\n\t- "+UNIT+"ms UNIT.\n\t- "+(message.length*UNIT)/1000+" seconds.")
     for(let sign in message){
         //console.log(sign + ": "+message[sign]);
         if(message[sign] == "."){
