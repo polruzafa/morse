@@ -20,13 +20,15 @@ app.post("/morse/this/:message", (request, response) =>{
     //console.log(request.params.message);
     // Codify message to morse code
     let coded = morse.stringify(morse.m2m(request.params.message));
-    // Reproduce message as blinking LED
-    gpio.reproduce(coded);
+    
     // Return info
     response.json({
         "message": request.params.message,
         "morse": coded
     });
+
+    // Reproduce message as blinking LED
+    gpio.reproduce(coded);
 });
 
 app.get("/morse/test", (request, response) =>{
