@@ -90,7 +90,8 @@ function stringify(message){
         console.log(tokens[word])
         for(let letter in tokens[word]){
             for(sign in word[letter]){
-                stringified += letter.charAt(sign);
+                console.log(letter[sign])
+                stringified += letter[sign];
             }
             stringified += "   ";
         }
