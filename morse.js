@@ -1,4 +1,3 @@
-//var rpio = require("rpio");
 
 const alphabet = {
     "a": ".-",
@@ -39,11 +38,7 @@ const alphabet = {
     "0": "-----"
 }
 
-//  Transforms the message to morse code, using .- as symbols;
-function morse(message){
-    
-}
-
+// to morse
 function c2m(character){
     return alphabet[character];
 }
@@ -52,23 +47,47 @@ function w2m(word){
     for(let i = 0; i < word.length; i++){
         morse_word.push(c2m(word[i].toLowerCase()));
     }
-    console.log(morse_word);
     return morse_word;
 }
-
 function m2m(message){
     let tokens = message.split(" ");
     let morse_tokens = [];
     for(let i = 0; i < tokens.length; i++){
         morse_tokens.push(w2m(tokens[i]));
     }
-    console.log(morse_tokens);
     return morse_tokens;
+}
+// de-morse
+function m2c(character){
+    for (let letter in alphabet) {
+        if (alphabet.hasOwnProperty(letter)){
+            if(alphabet[letter] == character){
+                return letter;
+            }
+        }
+    }
+}
+function m2w(word){
+    let actual_word = "";
+    for(let i = 0; i < word.length; i++){
+        actual_word += m2c(word[i]);
+    }
+    return actual_word;
+}
+function m2a(message){
+    let actual_message = "";
+    for(let i = 0; i < message.length; i++){
+        actual_message += m2w(message[i])+" ";
+    }
+    return actual_message.trim();
 }
 
 module.exports = {
-    morse: morse,
     c2m: c2m,
     w2m: w2m,
-    m2m: m2m
+    m2m: m2m,
+
+    m2c: m2c,
+    m2w: m2w,
+    m2a: m2a
 }

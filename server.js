@@ -6,16 +6,8 @@ var app = express();
 var port = 8011;
 // Import our own DigitalOcean module
 var morse = require("./morse.js");
-
+var gpio = require("./gpio");
 // API
-// Returns the external IP address
-app.get("/pls/give/ip", (request, response) =>{
-    //console.log(request.ip.substr(7));
-    response.json({
-        "address":request.ip.substr(7)
-    });
-});
-
 
 // Returns whether the current IP is different 
 app.get("/pls/has/:subdomain/changed/:ip", (request, response) =>{
@@ -24,8 +16,17 @@ app.get("/pls/has/:subdomain/changed/:ip", (request, response) =>{
 });
 
 // Update subdomain ip address
-app.post("/pls/:subdomain/to/:ip", (request, response) =>{
-    
+app.post("/morse/this/:message", (request, response) =>{
+    //console.log(request.params.message);
+    // Codify message to morse code
+    let morsified = morse.m2m(request.params.message);
+    // Reproduce message as blinking LED
+    gpio.reproduce(morsified);
+    // Return info
+    response.json({
+        "message": request.params.message,
+        "morse": morsified
+    });
 });
 
 // Listener
