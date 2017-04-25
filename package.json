@@ -1,0 +1,31 @@
+{
+  "name": "morse",
+  "version": "1.0.0",
+  "description": "Raspberry Pi Morse LED project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/polruzafa/morse.git"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "morse",
+    "led",
+    "node"
+  ],
+  "author": "Pol Ruzafa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polruzafa/morse/issues"
+  },
+  "homepage": "https://github.com/polruzafa/morse#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "path": "^0.12.7",
+    "rpio": "^0.9.16"
+  }
+}
