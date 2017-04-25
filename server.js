@@ -4,24 +4,16 @@ var express = require("express");
 var app = express();
 // Define port to listen to
 var port = 8011;
-// Import our own DigitalOcean module
+// Import our morse and gpio lib
 var morse = require("./morse.js");
 var gpio = require("./gpio");
+
 // API
-
-// Returns whether the current IP is different 
-app.get("/pls/has/:subdomain/changed/:ip", (request, response) =>{
-    // DigitalOcean
-    
-});
-
-// Update subdomain ip address
 app.post("/morse/this/:message", (request, response) =>{
-    //console.log(request.params.message);
     // Codify message to morse code
     let coded = morse.stringify(morse.m2m(request.params.message));
     
-    // Return info
+    // Respond with info
     response.json({
         "message": request.params.message,
         "morse": coded
@@ -32,10 +24,12 @@ app.post("/morse/this/:message", (request, response) =>{
 });
 
 app.get("/morse/test", (request, response) =>{
-    gpio.test("...---...");
+    //
     response.json({
         "message": "Testing"
     });
+    //
+    gpio.test("...---...");
 });
 
 // Listener
