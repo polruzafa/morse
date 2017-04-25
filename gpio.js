@@ -1,6 +1,6 @@
 var rpio = require("rpio");
 
-const UNIT = 400;
+const UNIT = 200;
 const SHORT = UNIT;
 const LONG = UNIT * 3;
 const INTER_ELEMENT = UNIT;
@@ -11,9 +11,8 @@ const INTER_WORD = UNIT * 7;
 rpio.init();
 
 function reproduce(message){
-    console.log("Testing LED morse code for: "+message);
     for(let sign in message){
-        console.log(sign + ": "+message[sign]);
+        //console.log(sign + ": "+message[sign]);
         if(message[sign] == "."){
             dot();
             rpio.msleep(UNIT);
