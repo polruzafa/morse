@@ -87,7 +87,7 @@ function stringify(tokens){
     for(let n = 0; n < tokens.length; n++){
         for(let m = 0; m < tokens[n].length; m++){
             for(let b = 0; b < tokens[n][m].length; b++){
-                stringified += tokens[n][m];
+                stringified += tokens[n][m][b];
                 stringified += " ";    
             }            
             stringified += "   ";
