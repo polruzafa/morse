@@ -85,13 +85,15 @@ function m2a(message){
 function stringify(message){
     let stringified = "";
     let tokens = message.split(" ");
-    console.log(tokens)
-    for(let word in tokens){
-        console.log(word + ": "+tokens[word]);
-        for(let i = 0; i < tokens[word].length; i++){
-            console.log(tokens[word].charAt(i));
+    for(let n = 0; n < tokens.length; n++){
+        for(let m = 0; m < tokens[n].length; m++){
+            for(let b = 0; b < tokens[n][m].length; b++){
+                stringified += tokens[n][m];
+                stringified += " ";    
+            }            
+            stringified += "   ";
         }
-        
+        stringified += "       ";
     }
     console.log(stringified);
     return stringified.trim();

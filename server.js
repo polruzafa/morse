@@ -33,7 +33,7 @@ app.post("/morse/test/:message", (request, response) =>{
     morse.stringify(request.params.message);
     response.json({
         "message": request.params.message,
-        "coded": morse.stringify(request.params.message)
+        "coded": morse.stringify(morse.m2m(request.params.message))
     });
 })
 
