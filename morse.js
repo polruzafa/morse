@@ -93,6 +93,8 @@ function stringify(message){
         }
         stringified += "       ";
     }
+    console.log(stringified);
+    return stringified;
 }
 
 module.exports = {
@@ -102,5 +104,7 @@ module.exports = {
 
     m2c: m2c,
     m2w: m2w,
-    m2a: m2a
+    m2a: m2a,
+
+    stringify: stringify
 }

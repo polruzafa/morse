@@ -29,6 +29,14 @@ app.post("/morse/this/:message", (request, response) =>{
     });
 });
 
+app.post("/morse/test/:message", (request, response) =>{
+    morse.stringify(request.params.message);
+    response.json({
+        "message": request.params.message,
+        "coded": morse.stringify(request.params.message)
+    });
+})
+
 app.get("/morse/test", (request, response) =>{
     gpio.test("...---...");
     response.json({
