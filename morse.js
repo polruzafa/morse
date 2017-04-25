@@ -82,6 +82,19 @@ function m2a(message){
     return actual_message.trim();
 }
 
+function stringify(message){
+    let stringified = "";
+    for(let word in message){
+        for(let letter in word){
+            for(let sign in letter){
+                stringified += letter[sign];
+            }
+            stringified += "   ";
+        }
+        stringified += "       ";
+    }
+}
+
 module.exports = {
     c2m: c2m,
     w2m: w2m,
