@@ -25,7 +25,7 @@ app.post("/morse/this/:message", (request, response) =>{
     // Return info
     response.json({
         "message": request.params.message,
-        "morse": morsified
+        "morse": coded
     });
 });
 
