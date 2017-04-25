@@ -1,11 +1,11 @@
 var rpio = require("rpio");
 
 const alphabet = {
-    "a": "·-",
-    "b": "-···",
-    "c": "-·-·",
-    "d": "--··",
-    "e": "·",
+    "a": ".-",
+    "b": "-...",
+    "c": "-.-.",
+    "d": "--..",
+    "e": ".",
     "f": "..-.",
     "g": "--.",
     "h": "....",
@@ -39,7 +39,7 @@ const alphabet = {
     "0": "-----"
 }
 
-//  Transforms the message to morse code, using ·- as symbols;
+//  Transforms the message to morse code, using .- as symbols;
 function morse(message){
     let tokens = message.split(" ");
     for(let i = 0; i < tokens.length; i++){
