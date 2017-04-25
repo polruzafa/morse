@@ -19,7 +19,7 @@ app.get("/pls/has/:subdomain/changed/:ip", (request, response) =>{
 app.post("/morse/this/:message", (request, response) =>{
     //console.log(request.params.message);
     // Codify message to morse code
-    let coded = morse.m2m(request.params.message);
+    let coded = morse.stringify(morse.m2m(request.params.message));
     // Reproduce message as blinking LED
     gpio.reproduce(coded);
     // Return info
@@ -28,14 +28,6 @@ app.post("/morse/this/:message", (request, response) =>{
         "morse": coded
     });
 });
-
-app.post("/morse/test/:message", (request, response) =>{
-    morse.stringify(request.params.message);
-    response.json({
-        "message": request.params.message,
-        "coded": morse.stringify(morse.m2m(request.params.message))
-    });
-})
 
 app.get("/morse/test", (request, response) =>{
     gpio.test("...---...");
