@@ -1,6 +1,6 @@
 var rpio = require("rpio");
 
-const UNIT = 200;
+const UNIT = 400;
 const SHORT = UNIT;
 const LONG = UNIT * 3;
 const INTER_ELEMENT = UNIT;
