@@ -12,8 +12,9 @@ rpio.init();
 
 function reproduce(message){
     let morse = "";
+    console.log(message);
     for(let word in message){
-        //console.log(message[word]);
+        console.log(message[word]);
         for(let letter in word){
             console.log(word[letter]);
             for(let sign in letter){
