@@ -87,15 +87,9 @@ function stringify(message){
     let tokens = message.split(" ");
     console.log(tokens)
     for(let word in tokens){
-        console.log(tokens[word])
-        for(let letter in tokens[word]){
-            for(sign in word[letter]){
-                console.log(letter[sign])
-                stringified += letter[sign];
-            }
-            stringified += "   ";
-        }
-        stringified += "       ";
+        console.log(word + ": "+tokens[word]);
+        console.log(tokens[word].charAt(1));
+        
     }
     console.log(stringified);
     return stringified.trim();
