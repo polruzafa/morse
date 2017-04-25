@@ -88,15 +88,15 @@ function stringify(message){
     console.log(tokens)
     for(let word in tokens){
         for(let letter in word){
-            for(let sign in letter){
-                stringified += letter[sign];
+            for(let i = 0; i < letter.length; i++){
+                stringified += letter[i];
             }
             stringified += "   ";
         }
         stringified += "       ";
     }
     console.log(stringified);
-    return stringified;
+    return stringified.trim();
 }
 
 module.exports = {
