@@ -11,36 +11,19 @@ const INTER_WORD = UNIT * 7;
 rpio.init();
 
 function reproduce(message){
-    let morse = "";
-    //console.log(message);
-    for(let word in message){
-        //console.log(message[word]);
-        for(let letter in word){
-            //console.log(word[letter]);
-            for(let sign in word[letter]){
-                if(letter[sign] == "."){
-                    dot();
-                }else{
-                    dash();
-                }
-                rpio.msleep(INTER_ELEMENT);
-            }
-            rpio.msleep(INTER_LETTER);
-        }
-        rpio.msleep(INTER_WORD);
-    }
-}
-
-function test(message){
     console.log("Testing LED morse code for: "+message);
     for(let sign in message){
         console.log(sign + ": "+message[sign]);
         if(message[sign] == "."){
             dot();
-        }else{
+            rpio.msleep(UNIT);
+        }else if(message[sign] == "-"){
             dash();
+            rpio.msleep(UNIT);
+        }else{
+            rpio.msleep(UNIT);
         }
-        rpio.msleep(INTER_ELEMENT);
+        
     }
 }
 
@@ -67,5 +50,4 @@ function dot(){
 
 module.exports = {
     reproduce: reproduce,
-    test: test
 }

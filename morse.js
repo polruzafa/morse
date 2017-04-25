@@ -88,13 +88,11 @@ function stringify(tokens){
         for(let m = 0; m < tokens[n].length; m++){
             for(let b = 0; b < tokens[n][m].length; b++){
                 stringified += tokens[n][m][b];
-                stringified += " ";    
             }            
             stringified += "   ";
         }
         stringified += "       ";
     }
-    console.log(stringified);
     return stringified.trim();
 }
 
