@@ -20,7 +20,7 @@ function reproduce(message){
     }*/
     let morse = "";
     for(let word in message){
-        console.log(word);
+        console.log(message[word]);
     }
 
     rpio.close(11);
