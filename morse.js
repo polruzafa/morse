@@ -84,7 +84,9 @@ function m2a(message){
 
 function stringify(message){
     let stringified = "";
-    for(let word in message.split(" ")){
+    let tokens = message.split(" ");
+    console.log(tokens)
+    for(let word in tokens){
         for(let letter in word){
             for(let sign in letter){
                 stringified += letter[sign];
