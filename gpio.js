@@ -1,19 +1,53 @@
 var rpio = require("rpio");
-//var morse = require("./morse");
+
+const UNIT = 200;
+const SHORT = UNIT;
+const LONG = UNIT * 3;
+const INTER_ELEMENT = UNIT;
+const INTER_LETTER = UNIT * 3;
+const INTER_WORD = UNIT * 7;
+
+// Init GPIO
+rpio.init();
 
 function reproduce(message){
-    rpio.init();
-    rpio.open(11, rpio.OUTPUT, rpio.LOW);
-
-    for(let i = 0; i < 5; i++){
-        rpio.write(11, rpio.HIGH);
-        rpio.sleep(1);
-
-        rpio.write(11, rpio.LOW);
-        rpio.msleep(500);
+    console.log("Reproducing message: \n"+message+"\n\n\t- "+UNIT+"ms UNIT.\n\t- "+(message.length*UNIT)/1000+" seconds.")
+    for(let sign in message){
+        //console.log(sign + ": "+message[sign]);
+        if(message[sign] == "."){
+            dot();
+            rpio.msleep(UNIT);
+        }else if(message[sign] == "-"){
+            dash();
+            rpio.msleep(UNIT);
+        }else{
+            rpio.msleep(UNIT);
+        }
+        
     }
 }
 
+// Make LED blink - dash
+function dash(){
+    rpio.open(11, rpio.OUTPUT, rpio.LOW);
+
+    rpio.write(11, rpio.HIGH);
+    rpio.msleep(LONG);
+    rpio.write(11, rpio.LOW);
+
+    rpio.close(11);
+}
+// Make LED blink - dot
+function dot(){
+    rpio.open(11, rpio.OUTPUT, rpio.LOW);
+
+    rpio.write(11, rpio.HIGH);
+    rpio.msleep(SHORT);
+    rpio.write(11, rpio.LOW);
+
+    rpio.close(11);
+}
+
 module.exports = {
-    reproduce: reproduce
+    reproduce: reproduce,
 }

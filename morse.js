@@ -59,8 +59,8 @@ function m2m(message){
 }
 // de-morse
 function m2c(character){
-    for (let letter in alphabet) {
-        if (alphabet.hasOwnProperty(letter)){
+    for(let letter in alphabet) {
+        if(alphabet.hasOwnProperty(letter)){
             if(alphabet[letter] == character){
                 return letter;
             }
@@ -82,6 +82,20 @@ function m2a(message){
     return actual_message.trim();
 }
 
+function stringify(tokens){
+    let stringified = "";
+    for(let n = 0; n < tokens.length; n++){
+        for(let m = 0; m < tokens[n].length; m++){
+            for(let b = 0; b < tokens[n][m].length; b++){
+                stringified += tokens[n][m][b];
+            }            
+            stringified += "   ";
+        }
+        stringified += "       ";
+    }
+    return stringified.trim();
+}
+
 module.exports = {
     c2m: c2m,
     w2m: w2m,
@@ -89,5 +103,7 @@ module.exports = {
 
     m2c: m2c,
     m2w: m2w,
-    m2a: m2a
+    m2a: m2a,
+
+    stringify: stringify
 }
