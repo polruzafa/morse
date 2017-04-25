@@ -33,6 +33,12 @@ function test(message){
     console.log("Testing LED morse code for: "+message);
     for(let sign in message){
         console.log(sign + ": "+message[sign]);
+        if(message[sign] == "."){
+            dot();
+        }else{
+            dash();
+        }
+        rpio.msleep(INTER_ELEMENT);
     }
 }
 
