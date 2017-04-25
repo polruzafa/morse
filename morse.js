@@ -89,7 +89,7 @@ function stringify(message){
     for(let word in tokens){
         for(let letter in word){
             for(let i = 0; i < letter.length; i++){
-                stringified += letter[i];
+                stringified += letter.charAt(i);
             }
             stringified += "   ";
         }
