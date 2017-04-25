@@ -15,6 +15,7 @@ function reproduce(message){
     for(let word in message){
         //console.log(message[word]);
         for(let letter in word){
+            console.log(word[letter]);
             for(let sign in letter){
                 if(letter[sign] == "."){
                     dot();
