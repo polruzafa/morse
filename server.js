@@ -29,6 +29,13 @@ app.post("/morse/this/:message", (request, response) =>{
     });
 });
 
+app.get("/morse/test", (request, response) =>{
+    gpio.test("...---...");
+    response.json({
+        "message": "Testing"
+    });
+});
+
 // Listener
 app.listen(port, () =>{
     console.log("Stuff happening on port "+port)

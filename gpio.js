@@ -28,6 +28,14 @@ function reproduce(message){
         rpio.msleep(INTER_WORD);
     }
 }
+
+function test(message){
+    console.log("Testing LED morse code for: "+message);
+    for(let sign in message){
+        console.log(sign + ": "+message[sign]);
+    }
+}
+
 // Make LED blink - dash
 function dash(){
     rpio.open(11, rpio.OUTPUT, rpio.LOW);
@@ -50,5 +58,6 @@ function dot(){
 }
 
 module.exports = {
-    reproduce: reproduce
+    reproduce: reproduce,
+    test: test
 }
