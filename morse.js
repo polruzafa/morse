@@ -82,9 +82,8 @@ function m2a(message){
     return actual_message.trim();
 }
 
-function stringify(message){
+function stringify(tokens){
     let stringified = "";
-    let tokens = message.split(" ");
     for(let n = 0; n < tokens.length; n++){
         for(let m = 0; m < tokens[n].length; m++){
             for(let b = 0; b < tokens[n][m].length; b++){
