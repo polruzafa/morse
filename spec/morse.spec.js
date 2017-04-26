@@ -18,7 +18,6 @@ describe("Morse.js unit testing", ()=>{
             [ '....', '.', '.-..', '.-..', '---' ],
             [ '.--', '---', '.-.', '.-..', '--..' ]
         ];
-
         expect(morse.m2m("Hello world")).toEqual(morse_hello_world);
     });
 
@@ -38,7 +37,6 @@ describe("Morse.js unit testing", ()=>{
             [ '....', '.', '.-..', '.-..', '---' ],
             [ '.--', '---', '.-.', '.-..', '--..' ]
         ];
-
         expect(morse.m2a(morse_hello_world)).toEqual("hello world");
     });
 

@@ -21,16 +21,17 @@ app.post("/morse/this/:message", (request, response) =>{
     });
 
     // Reproduce message as blinking LED
-    //gpio.reproduce(coded);
+    gpio.reproduce(coded);
 });
 
 app.get("/morse/test", (request, response) =>{
     //
     response.json({
-        "message": "Testing"
+        "message": "SOS",
+        "morse": "...---..."
     });
     //
-    //gpio.test("...---...");
+    gpio.reproduce("...---...");
 });
 
 app.get("/morse/discover", (request, response) =>{
