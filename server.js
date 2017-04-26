@@ -1,12 +1,13 @@
 // HTTP Server
 var express = require("express");
 //var request = require("superagent");
+var ip = require("ip");
 var app = express();
 // Define port to listen to
 var port = 8011;
 // Import our morse and gpio lib
 var morse = require("./morse.js");
-var gpio = require("./gpio");
+//var gpio = require("./gpio");
 
 // API
 app.post("/morse/this/:message", (request, response) =>{
@@ -26,10 +27,19 @@ app.post("/morse/this/:message", (request, response) =>{
 app.get("/morse/test", (request, response) =>{
     //
     response.json({
-        "message": "Testing"
+        "message": "SOS",
+        "morse": "...---..."
     });
     //
-    gpio.test("...---...");
+    gpio.reproduce("...---...");
+});
+
+app.get("/morse/discover", (request, response) =>{
+    response.json({
+        "hey": "listen",
+        "ip": ip.address(),
+        "port": port
+    });
 });
 
 // Listener
