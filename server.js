@@ -7,7 +7,7 @@ var app = express();
 var port = 8011;
 // Import our morse and gpio lib
 var morse = require("./morse.js");
-//var gpio = require("./gpio");
+var gpio = require("./gpio");
 
 // API
 app.post("/morse/this/:message", (request, response) =>{
