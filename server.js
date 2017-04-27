@@ -17,7 +17,8 @@ app.post("/morse/this/:message", (request, response) =>{
     // Respond with info
     response.json({
         "message": request.params.message,
-        "morse": coded
+        "morse": coded,
+        //"elapsed": 
     });
 
     // Reproduce message as blinking LED
