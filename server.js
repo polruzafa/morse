@@ -12,37 +12,26 @@ var morse = require("./morse.js");
 var gpio = require("./gpio");
 
 // API
-app.post("/morse/this/:message", (request, response) =>{
-    // Codify message to morse code
-    let coded = morse.stringify(morse.m2m(request.params.message));
-    
-    // Respond with info
-    response.json({
-        "message": request.params.message,
-        "morse": coded,
-        //"elapsed": 
-    });
-
-    // Reproduce message as blinking LED
-    gpio.reproduce(coded);
-});
 var jsonParser = bodyParser.json();
 app.post("/morse/this", jsonParser, (request, response) =>{
     // Codify message to morse code
-    console.log(request.body)
     let coded = morse.stringify(morse.m2m(request.body.message));
     
     // Respond with info
     response.json({
         "message": request.body.message,
         "morse": coded,
-        //"elapsed":
+        "elapsed": coded.length * gpio.UNIT
     });
 
     // Reproduce message as blinking LED
-    gpio.reproduce(coded);
+    //gpio.reproduce(coded);
 });
 
+app.post("/morse/play", jsonParser,(request, response) =>{
+    // Directly reproduce a morse-coded string
+    gpio.reproduce(request.body.morse);
+});
 
 app.get("/morse/test", (request, response) =>{
     //
