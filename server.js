@@ -11,8 +11,6 @@ var port = 8011;
 var morse = require("./morse.js");
 var gpio = require("./gpio");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
 // API
 app.post("/morse/this/:message", (request, response) =>{
     // Codify message to morse code
@@ -28,7 +26,8 @@ app.post("/morse/this/:message", (request, response) =>{
     // Reproduce message as blinking LED
     gpio.reproduce(coded);
 });
-app.post("/morse/this", (request, response) =>{
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.post("/morse/this", urlencodedParser, (request, response) =>{
     // Codify message to morse code
     console.log(request.body)
     let coded = morse.stringify(morse.m2m(request.body.message));
