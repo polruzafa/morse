@@ -3,11 +3,15 @@ var express = require("express");
 //var request = require("superagent");
 var ip = require("ip");
 var app = express();
+var bodyParser = require("body-parser")
+
 // Define port to listen to
 var port = 8011;
 // Import our morse and gpio lib
 var morse = require("./morse.js");
 var gpio = require("./gpio");
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // API
 app.post("/morse/this/:message", (request, response) =>{
@@ -24,6 +28,22 @@ app.post("/morse/this/:message", (request, response) =>{
     // Reproduce message as blinking LED
     gpio.reproduce(coded);
 });
+app.post("/morse/this", (request, response) =>{
+    // Codify message to morse code
+    console.log(request.body)
+    let coded = morse.stringify(morse.m2m(request.body.message));
+    
+    // Respond with info
+    response.json({
+        "message": request.body.message,
+        "morse": coded,
+        //"elapsed":
+    });
+
+    // Reproduce message as blinking LED
+    gpio.reproduce(coded);
+});
+
 
 app.get("/morse/test", (request, response) =>{
     //
