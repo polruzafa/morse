@@ -13,7 +13,7 @@ var gpio = require("./gpio");
 
 // API
 var jsonParser = bodyParser.json();
-app.post("/morse/this", jsonParser, (request, response) =>{
+app.post("/morse/code", jsonParser, (request, response) =>{
     // Codify message to morse code
     let coded = morse.stringify(morse.m2m(request.body.message));
     
