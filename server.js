@@ -26,8 +26,8 @@ app.post("/morse/this/:message", (request, response) =>{
     // Reproduce message as blinking LED
     gpio.reproduce(coded);
 });
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post("/morse/this", urlencodedParser, (request, response) =>{
+var jsonParser = bodyParser.json();
+app.post("/morse/this", jsonParser, (request, response) =>{
     // Codify message to morse code
     console.log(request.body)
     let coded = morse.stringify(morse.m2m(request.body.message));
